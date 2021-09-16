@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const WebSocket = require('ws');
+const MONGOURL = require('./env');
 
 const products = require('./controllers/products');
 const orders = require('./controllers/orders');
@@ -11,7 +12,7 @@ const decoder = new TextDecoder('utf-8');
 const app = express();
 const webSocketClient = new WebSocket('wss://mec-storage.herokuapp.com');
 
-mongoose.connect('mongodb://127.0.0.1:27017/mec-api', {
+mongoose.connect(MONGOURL, {
     useNewUrlParser: true
 })
 
